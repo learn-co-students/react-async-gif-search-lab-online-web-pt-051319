@@ -2,9 +2,9 @@ import React from 'react';
 
 const GifList = (props) => {
 	return (
-		<React.Fragment>
-			{props.gifs.map(url => <img src={url} />)}
-		</React.Fragment>
+		<div className="row" >
+			{props.gifs.map((url, i) => <img alt="gif from giphy" key={i} src={url} />)}
+		</div>
 	)
 }
 

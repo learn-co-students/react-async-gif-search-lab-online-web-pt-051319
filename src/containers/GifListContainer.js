@@ -13,21 +13,23 @@ export default class GifListContainer extends Component {
 	})
 
 	handleSubmit = (data) => {
-		this.handleFetch(BASE_URL + data.get('query'))
+		this.setState({query: data.get('query')})
+		this.handleFetch()
 	}
 
-	handleFetch = (query) => {
-		fetch(BASE_URL + query)
+	handleFetch = () => {
+		const fetchURL = BASE_URL + this.state.query
+		fetch(fetchURL)
 		.then(r => r.json())
 		.then(rj => this.setState({gifs: rj.data.map(img => img.images.fixed_height.url)}))
 	}
 
 	render() {
 		return (
-			<React.Fragment>
+			<div className="container">
 				<GifSearch handleSubmit={this.handleSubmit} />
 				<GifList gifs={this.state.gifs} />
-			</React.Fragment>
+			</div>
 		)
 	}
 }
