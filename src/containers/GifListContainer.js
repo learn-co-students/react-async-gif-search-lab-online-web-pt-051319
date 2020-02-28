@@ -15,7 +15,7 @@ class GifListContainer extends React.Component {
       .then(res => res.json())
       .then(json =>
         this.setState({
-          gifs: json.data.slice(0, 3)
+          gifs: json.data.slice(0, 4)
         })
       );
   };
